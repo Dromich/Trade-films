@@ -5,12 +5,19 @@
 }
 .baner_decs {
 	
-	margin-top: 10%;
+	margin-top: 0;
+	z-index:2;	
 }
-.baner_decs img:first-child {
+.baner_decs img {
+	max-width: 100%;
+	display:block;
+	max-height:100px;
+	margin:0 auto;
+}
+/*.baner_decs img:first-child {
 	max-width: 68%;
 }
 .baner_decs img:last-child {
 	max-width: 28%;
 	margin-top: -165px;
-}
+}*/
