@@ -562,27 +562,34 @@
 
 
 	<script src="js/scripts.min.js"></script>
-	<script async defer	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJZeVoXwjtp_ixu6T-6342M9H7qwfAWPY&callback=initMap">	</script>
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJZeVoXwjtp_ixu6T-6342M9H7qwfAWPY&callback=initMap">	</script>
 </body>
 <script>
-function initMap() {
-  var myLatLng = {lat:49.547283,
-                  lng:25.574282};
-    var Gov = {lat:49.548626,
-                  lng:25.564816};
+	function initMap() {
 
-  var map22 = new google.maps.Map(document.getElementById('Map22'), {
-    zoom: 6,
-    center: myLatLng
-  });
+		var myLatLng = {
+			lat: 48.300360,
+			lng: 32.160000
+		};
+		var rest = {
+			lat: 49.5435911,
+			lng: 25.6157549
+		};
 
-  var marker22 = new google.maps.Marker({
-    position: Gov,
-    map: map22,
-      animation: google.maps.Animation.DROP,
-    title: 'Говерла БПК'
-  });
-};
+		var map22 = new google.maps.Map(document.getElementById('Map22'), {
+			zoom: 6,
+			center: myLatLng
+		});
+
+		var marker1 = new google.maps.Marker({
+			position: rest,
+			map: map22,
+			animation: google.maps.Animation.DROP,
+			title: 'Restyling Тернопіль'
+		});
+	};
 </script>
+
 </html>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:300i,400i,500i&amp;subset=cyrillic" rel="stylesheet">
