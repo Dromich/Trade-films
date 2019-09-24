@@ -12154,6 +12154,7 @@ table th {
 	color: #191919;
 	margin: 20px 60px 20px 20px;
 	text-align: center;
+	
 }
 
 /* .header3::before {
@@ -12632,3 +12633,36 @@ table th {
 	max-width: 28%;
 	margin-top: -165px;
 }*/
+.big_partners_wrap {	
+	width: 100%;
+}
+.big_partners_wrap img{
+	width: 13%;
+	vertical-align: middle;
+	max-width: 120px;
+
+}
+.big_partners_ttl{
+	text-transform:uppercase;
+}
+#ua_police {
+	padding: 15px;
+}
+@media (max-width:768px){
+
+	#ua_police {
+		padding: 5px;
+	}
+	.big_partners_ttl {
+		font-size: 16px;
+	}
+	.big_partners_wrap img {
+		width: 33.3%;
+		vertical-align: middle;
+		max-width: 200px;
+	}
+	.big_partners_wrap img:last-child {
+		margin-top: 15px;
+		width: 100%;
+	}
+}

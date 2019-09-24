@@ -107,6 +107,10 @@ let witdth = window.innerWidth;
 			lat: 50.4844844,
 			lng: 30.5072549
 		};
+		var Autofilmservice = {
+			lat: 50.5001876,
+			lng: 30.6173135
+		};
 
 
 		var map22 = new google.maps.Map(document.getElementById('Map22'), {
