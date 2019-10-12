@@ -1,14 +1,14 @@
 $(function() {
 
-	$.getJSON("https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5", function(data){
-		var usd_data = "";
-		$.each(data, function(key, value){
-			usd_data += value.sale;
-		});
-		var show = Number(usd_data[0] + usd_data[1] + usd_data[2] + usd_data[3] + usd_data[4]);
-		var show1 = (show + 0.29).toPrecision(3);
-		$("#usd-rate").append(show1);
-	});
+	// $.getJSON("https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5", function(data){
+	// 	var usd_data = "";
+	// 	$.each(data, function(key, value){
+	// 		usd_data += value.sale;
+	// 	});
+	// 	var show = Number(usd_data[0] + usd_data[1] + usd_data[2] + usd_data[3] + usd_data[4]);
+	// 	var show1 = (show + 0.29).toPrecision(3);
+	// 	$("#usd-rate").append(show1);
+	// });
 
 
 	$("form.callback").submit(function() { 
