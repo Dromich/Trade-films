@@ -40,6 +40,8 @@ gulp.task('js', function() {
 		'app/libs/jquery/dist/jquery.min.js',
 		'app/libs/owl/owl.carousel.min.js',
 		'app/libs/bootstrap/bootstrap.min.js',
+		//'app/libs/bootstrap/js/util.js',
+		//'app/libs/bootstrap/js/modal.js',
 		'app/js/common.js', // Always at the end
 		])
 	.pipe(concat('scripts.min.js'))
@@ -52,14 +54,15 @@ gulp.task('rsync', function() {
 	return gulp.src('app/**')
 	.pipe(rsync({
 		root: 'app/',
-		hostname: 'nazar105@tradefilms.com.ua',
-		destination: 'yousite/public_html/',
+		hostname: 'nazar105@185.17.121.220',
+		destination: '/public_html/',
 		// include: ['*.htaccess'], // Includes files to deploy
 		exclude: ['**/Thumbs.db', '**/*.DS_Store'], // Excludes files from deploy
 		recursive: true,
 		archive: true,
 		silent: false,
-		compress: true
+		compress: true,
+		port:5020
 	}))
 });
 
