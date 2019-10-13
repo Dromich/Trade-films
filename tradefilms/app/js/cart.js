@@ -1,11 +1,6 @@
 $(function(){
 
-    // localStorage.setItem("active_menu", path); or null
-    // localStorage.getItem("active_menu");
-    // localStorage.clear();
-
-    //alert(localStorage.getItem("preOrder"));
-
+   
     //##################################################### AddGoods START
     // функция добавления товара в корзину
     function AddGoods(id, title, price, link, amount){
@@ -19,7 +14,7 @@ $(function(){
         if(Goods !== null){
 
             if(Goods[id] !== undefined){ // если товар с таким id уже есть в корзине
-                alert("Ця позиція вже є в корзині!");
+                alert("Етот товар уже в корзине");
             } else{
 
                 //#####################################################
@@ -31,8 +26,8 @@ $(function(){
                 Goods[id] = GoodsInfo;
                 localStorage.setItem("Goods", JSON.stringify(Goods)); // заносим новый товар в память
                 //#####################################################
-				$(".listing-cart tr:last").after('<tr class="oneGoods"><td><a href="'+link+'" data-goodsId="'+id+'">'+title+'</a></td><td><input type="number" name="" class="goodsAmount" min="1" value="'+amount+'"></td><td class="productPrice"><b>'+price+'</b><span> грн.</span><span class="removeGoods"></span></td></tr>');
-				$('form#teleform').prepend('<input type="hidden" class="tele_form_inp" name="'+title+'" id="tef'+id+'" value="'+amount+'" />');
+				$(".listing-cart tr:last").after('<tr class="oneGoods row"><td class="col-md-6 col"><a href="'+link+'" data-goodsId="'+id+'">'+title+'</a></td><td class="col-md-2 col"><input type="number" name="" class="col goodsAmount" min="1" value="'+amount+'"></td><td class="col-md-3 col productPrice"><b>'+price+'</b><span> грн.</span></td><td class="col-1"><span class="removeGoods">☒</span></td></tr>');
+				//$('form#teleform').prepend('<input type="hidden" class="tele_form_inp" name="'+title+'" id="tef'+id+'" value="'+amount+'" />');
 			
 			}
 			
@@ -50,8 +45,8 @@ $(function(){
             Goods[id] = GoodsInfo;
             localStorage.setItem("Goods", JSON.stringify(Goods)); // заносим новый товар в память
             //#####################################################
-			$(".listing-cart tr:last").after('<tr class="oneGoods"><td><a href="'+link+'" data-goodsId="'+id+'">'+title+'</a></td><td><input type="number" name="" class="goodsAmount" min="1" value="'+amount+'"></td><td class="productPrice"><b>'+price+'</b><span> грн.</span><span class="removeGoods"></span></td></tr>');
-			$('form#teleform').prepend('<input type="hidden" class="tele_form_inp" name="'+title+'" id="tef'+id+'" value="'+amount+'" />');
+			$(".listing-cart tr:last").after('<tr class="oneGoods row"><td class="col-md-6 col"><a href="'+link+'" data-goodsId="'+id+'">'+title+'</a></td><td class="col-md-2 col"><input type="number" name="" class="col goodsAmount" min="1" value="'+amount+'"></td><td class="col-md-3 col productPrice"><b>'+price+'</b><span> грн.</span></td><td class="col-1"><span class="removeGoods">☒</span></td></tr>');
+			//$('form#teleform').prepend('<input type="hidden" class="tele_form_inp" name="'+title+'" id="tef'+id+'" value="'+amount+'" />');
 			
         }
 
@@ -98,8 +93,8 @@ $(function(){
     // INIT
     // Оновлюєм корзину і форму телеграм після перезагрузки сторінки
     for (var i in GetGoods()){
-		$(".listing-cart tr:last, .staticCart tr:last").after('<tr class="oneGoods"><td><a href="'+GetGoods()[i]["link"]+'" data-goodsId="'+[i]+'">'+GetGoods()[i]["title"]+'</a></td><td><input type="number" name="" class="goodsAmount" min="1" value="'+GetGoods()[i]["amount"]+'"></td><td class="productPrice"><b>'+GetGoods()[i]["price"]+'</b><span> грн.</span><span class="removeGoods"></span></td></tr>');
-		$('form#teleform').prepend('<input type="hidden" class="tele_form_inp" name="'+GetGoods()[i]["title"]+'" id="tef'+[i]+'" value="'+GetGoods()[i]["amount"]+'" />');
+		$(".listing-cart tr:last, .staticCart tr:last").after('<tr class="oneGoods row"><td class="col-md-6 col"><a href="'+GetGoods()[i]["link"]+'" data-goodsId="'+[i]+'">'+GetGoods()[i]["title"]+'</a></td><td class="col-md-2 col"><input type="number" name="" class="goodsAmount" min="1" value="'+GetGoods()[i]["amount"]+'"></td><td class="col-md-3 col productPrice"><b>'+GetGoods()[i]["price"]+'</b><span> грн.</span></td><td class="col-1"><span class="removeGoods">☒</span></td></tr>');
+		//$('form#teleform').prepend('<input type="hidden" class="tele_form_inp" name="'+GetGoods()[i]["title"]+'" id="tef'+[i]+'" value="'+GetGoods()[i]["amount"]+'" />');
 		
 		
     }
@@ -116,51 +111,33 @@ $(function(){
             tmpCount = 1;
     });*/
 
-    //console.log(CountGoods());
+    
 
     // добавляем товар в корзину
-    $("body").on("click", ".add_to_cart", function(){
-
-		
-		
+    $("body").on("click", ".add_to_cart", function(){		
 
         id = $(this).attr("data-goodsId");
         productTitle = $(this).attr("data-goodsTitle");
         productPrice = $(this).attr("data-goodsPrice");
-        productLink = $(this).attr("href");
-
-       // top_el =  Math.floor($(this).offset().top);
-       // left_el = Math.floor($(this).offset().left);
-
-       // cart_top_el = $("#cart").offset().top;
-      //  cart_left_el = $("#cart").offset().left 
-        
-       // $(this).parent()  //ID Картинки, летящей в корзину
-      //  .clone().html("")
-		//.css({'background': '#E97130', 'position' : 'absolute', 'zIndex' : '9999', 'width' : '50px', 'height' : '50px', 'borderRadius' : '100px',
-	//	 'left' : left_el + 'px' - doc_w, 'top': top_el + 'px', 'textIndent': '-9999px'})
-		
-		// .prependTo("#cart")
-      //  .animate({'top': cart_top_el + 'px', 'left': cart_left_el + 'px' - doc_w + 20 ,  'width': '20px',  'height': '20px', 'zIndex' : '9999'}, 1000, function() {
-      //      $(this).remove();
-     //   });
+        productLink = $(this).attr("data-linck");
+      
         AddGoods(id, productTitle, productPrice, productLink);
 		
         return false;
     });
 
-    // открываем модальное окно
-    $("body").on("click", "#cart", function(){
-        $("#bg_0, #modalCart").fadeIn("slow");
-        $('html, body').animate({scrollTop: 0}, 700);
-        return false;
-    })
+    // // открываем модальное окно
+    // $("body").on("click", "#cart", function(){
+    //     $("#bg_0, #modalCart").fadeIn("slow");
+    //     $('html, body').animate({scrollTop: 0}, 700);
+    //     return false;
+    // })
 
-    // закрываем модальное окно
-    $("body").on("click", "#bg_0, .cartClose", function(){
-        $("#bg_0, #modalCart").fadeOut("slow");
-        return false;
-    })
+    // // закрываем модальное окно
+    // $("body").on("click", "#bg_0, .cartClose", function(){
+    //     $("#bg_0, #modalCart").fadeOut("slow");
+    //     return false;
+    // })
 
     // очистка корзины
     $("body").on("click", ".cartClear", function(){
@@ -240,9 +217,5 @@ $(function(){
 
     PreOrder();
 
-    // оплата
-    /*function Payments(){
-        $("#payment input[name='LMI_PAYMENT_AMOUNT']").val(AllMoneyGoods());
-    }*/
     
 })

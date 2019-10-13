@@ -210,6 +210,7 @@
 			  <label for="checkout_coment">Коментарий к заказу</label>
 			  <textarea name="Коментарий" id="checkout_coment" cols="10" rows="4"></textarea>
 			  <button class="btn btn-primary " type="submit">Подтвердить заказ</button>
+			  
 		  </form>
 	  </div>
 
@@ -217,41 +218,21 @@
 	  <div class="col-md-6">
 			<h3 col>Ваш заказ</h3>
 			<div id="open_cart" class="row">
-					<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-							<a href="xpel.html">
-								<div class="product-container">
-									<img src="img/xpel.png" alt="">
-								</div>
-							</a>
-						</div>
-						<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-							<a href="ultravision.html">
-								<div class="product-container" style="margin-bottom: 70px">
-									<img src="img/ultravision.png" height="64px"  alt="">
-								</div>
-							</a>
-						</div>
-						<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-							<a href="johnson.html">
-								<div class="product-container">
-									<img src="img/johnson.png" alt="">
-								</div>
-							</a>
-						</div>
-						<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-							<a href="sungear.html">
-								<div class="product-container sungear-cont">
-									<img src="img/sungear.png" height="60"  alt="">
-								</div>
-							</a>
-						</div>
-						<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-							<a href="tool.html" class="tool-a-cont">
-								<div class="product-container tool-cont">
-									<img style="width: 130px!important" height="84" src="img/tool.png" alt=""><br><p>Инструменты</p>
-								</div>
-							</a>
-						</div>
+				
+					<table class="listing-cart">
+							<tbody>
+							<tr>
+								<th>Назва</th>
+								<th >Кількість</th>
+								<th >Ціна / 1 шт.</th>
+							</tr>
+							
+						</tbody>
+					</table>
+
+						<div class="totalGoods">Разом: <b>0</b><span> грн.</span></div>	
+						
+					
 			</div>
 	  </div>
 
@@ -259,7 +240,11 @@
 			<div type="button" class="btn btn-primary col-12 align-self-center" data-toggle="modal" data-target="#my_cartModal">
 	
 					Launch demo modal
-				  </div>	
+				  </div>
+				  
+				  <div data-goodsId="1" data-goodsTitle="тестовий товар" data-goodsPrice="50" data-linck="shop.html"  class="add_to_cart demo_add_to_cart">
+					  <span>add to cart</span>
+				  </div>
 	  </div>
 	 
 	 
@@ -339,7 +324,7 @@
 
 		 		 <!-- Modal -->
 		 <div class="modal fade" id="my_cartModal" tabindex="-1" role="dialog" aria-labelledby="my_cart" aria-hidden="true">
-				<div class="modal-dialog" role="document">
+				<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 				  <div class="modal-content">
 					<div class="modal-header">
 					  <h5 class="modal-title" id="my_cartModalLabel">Корзина</h5>
@@ -347,9 +332,28 @@
 						<span aria-hidden="true">&times;</span>
 					  </button>
 					</div>
+
 					<div id="my_cart-body" class="modal-body">
-					  
+						<table class="listing-cart">
+							<tbody>
+							<tr class="row">
+								<th class="col-md-6 col">Назва</th>
+								<th class="col-md-2 col" >Кількість</th>
+								<th class="col-md-3 col" >Ціна / 1 шт.</th>
+								<th class="col-1"></th>
+							</tr>
+							
+						</tbody>
+					</table>
+					<div class="row justify-content-end">
+							<div class="col-6 col-md-3 totalGoods align-self-end">Разом: <b>0</b><span> грн.</span></div>	
+							
+						</div>
+						
+
+							
 					</div>
+
 					<div class="modal-footer">
 					  <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
 					  <a href="shop.html"><button type="button" class="btn btn-primary">Оформить заказ</button></a>
