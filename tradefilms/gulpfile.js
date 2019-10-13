@@ -41,8 +41,9 @@ gulp.task('js', function() {
 		'app/libs/owl/owl.carousel.min.js',
 		'app/libs/bootstrap/bootstrap.min.js',
 		//'app/libs/bootstrap/js/util.js',
-		//'app/libs/bootstrap/js/modal.js',
-		'app/js/common.js', // Always at the end
+		'app/js/cart.js',
+		'app/js/common.js'// Always at the end
+		
 		])
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify()) // Mifify js (opt.)
