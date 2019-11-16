@@ -195,7 +195,7 @@
 				<div class="container">
 					<div id="checkout_row" class="row justify-content-center  align-items-top">				
 
-	  <div class="col-md-6">
+	  <div class="col-md-4">
 		  <h3 col>Укажите ваши даные</h3>
 
 		  <form id="checkout_form" >
@@ -215,22 +215,20 @@
 	  </div>
 
 
-	  <div class="col-md-6">
+	  <div class="col-md-8">
 			<h3 col>Ваш заказ</h3>
-			<div id="open_cart" class="row">
-				
-					<table class="listing-cart">
-							<tbody>
-							<tr>
-								<th>Назва</th>
-								<th >Кількість</th>
-								<th >Ціна / 1 шт.</th>
-							</tr>
-							
-						</tbody>
-					</table>
+			<div id="open_cart" class="staticCart" >
+<div class="row">
+	<div class="col-md-6 col">Назва</div>
+	<div class="col-md-2 col">Кількість</div>
+	<div class="col-md-3 col">Ціна / 1 шт.</div>
+	<div class="col-1"></div>
 
-						<div class="totalGoods">Разом: <b>0</b><span> грн.</span></div>	
+</div>
+				
+				
+
+<div class="totalGoods col-12">Разом: <b>0</b><span> грн.</span></div>	
 						
 					
 			</div>
@@ -241,10 +239,18 @@
 	
 					Launch demo modal
 				  </div>
+
 				  
-				  <div data-goodsId="1" data-goodsTitle="тестовий товар" data-goodsPrice="50" data-linck="shop.html"  class="add_to_cart demo_add_to_cart">
+				  <div data-goodsId="1" data-godsimg="files/1.jpg" data-goodsTitle="тестовий товар" data-goodsPrice="50" data-linck="shop.html"  class="add_to_cart demo_add_to_cart col-12 align-self-center">
 					  <span>add to cart</span>
-				  </div>
+				  </div> 
+
+				  <br>
+
+				  <div data-goodsId="2" data-godsimg="files/3.jpg" data-goodsTitle="ще один тестовий товар" data-goodsPrice="66.30" data-linck="shop.html"  class="add_to_cart demo_add_to_cart col-12 align-self-center">
+					<span>add to cart</span>
+				</div>
+				<br>
 	  </div>
 	 
 	 

@@ -1,0 +1,65 @@
+.section_titel {
+	margin: 50px auto;
+
+	h4 {
+		text-transform: uppercase;
+		font-weight: bold;
+		width: 100%;
+		text-align: center;
+	}
+}
+
+.delta_item {
+	margin: 15px auto;
+	padding-left: 10px;
+	padding-right: 10px;
+	word-wrap: break-word;
+
+	.deltawrp {
+		border: 1px solid #333;
+		border-radius: 10px;
+		padding: 10px;
+	}
+
+	h5 {
+		font-size: 16px;
+		text-align: center;
+		border: 2px solid;
+		padding: 3px;
+	}
+
+	ul {
+		li {
+			font-size: 14px;
+		}
+	}
+
+
+
+	p {
+		//text-align: justify;
+		background-color: #ecc90fde;
+		padding: 10px;
+		font-size: 12px;
+		margin-top: 15px;
+		color: #333;
+		border-radius: 10px;
+	}
+
+	span {
+		font-size: 12px;
+		line-height: 1.4;
+		display: block;
+	}
+}
+.delta_small_item{
+	text-align: center;
+	margin: 10px auto;
+	padding: 10px;
+	
+	h5{
+		border: 2px solid;
+		padding: 10px;
+		font-size: 15px;
+	}
+}

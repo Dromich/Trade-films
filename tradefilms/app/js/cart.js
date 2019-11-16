@@ -3,7 +3,7 @@ $(function(){
    
     //##################################################### AddGoods START
     // функция добавления товара в корзину
-    function AddGoods(id, title, price, link, amount){
+    function AddGoods(img,id, title, price, link, amount){
 
         if(amount === undefined)
             amount = 1;
@@ -22,11 +22,12 @@ $(function(){
                 GoodsInfo.title = title;
                 GoodsInfo.price = price;
                 GoodsInfo.link = link;
-                GoodsInfo.amount = amount;
+				GoodsInfo.amount = amount;
+				GoodsInfo.img = img;
                 Goods[id] = GoodsInfo;
                 localStorage.setItem("Goods", JSON.stringify(Goods)); // заносим новый товар в память
                 //#####################################################
-				$(".listing-cart tr:last").after('<tr class="oneGoods row"><td class="col-md-6 col"><a href="'+link+'" data-goodsId="'+id+'">'+title+'</a></td><td class="col-md-2 col"><input type="number" name="" class="col goodsAmount" min="1" value="'+amount+'"></td><td class="col-md-3 col productPrice"><b>'+price+'</b><span> грн.</span></td><td class="col-1"><span class="removeGoods">☒</span></td></tr>');
+				$(".listing-cart tr:last").after('<tr class="oneGoods row"><td class="col-md-6 col"><img src="'+img+'" alt="'+title+'"><a href="'+link+'" data-goodsId="'+id+'"> '+title+'</a></td><td class="col-md-2 col"><input type="number" name="" class="col goodsAmount" min="1" value="'+amount+'"></td><td class="col-md-3 col productPrice"><b>'+price+'</b><span> грн.</span></td><td class="col-1"><span class="removeGoods">☒</span></td></tr>');
 				//$('form#teleform').prepend('<input type="hidden" class="tele_form_inp" name="'+title+'" id="tef'+id+'" value="'+amount+'" />');
 			
 			}
@@ -41,11 +42,12 @@ $(function(){
             GoodsInfo.title = title;
             GoodsInfo.price = price;
             GoodsInfo.link = link;
-            GoodsInfo.amount = amount;
+			GoodsInfo.amount = amount;
+			GoodsInfo.img = img;
             Goods[id] = GoodsInfo;
             localStorage.setItem("Goods", JSON.stringify(Goods)); // заносим новый товар в память
             //#####################################################
-			$(".listing-cart tr:last").after('<tr class="oneGoods row"><td class="col-md-6 col"><a href="'+link+'" data-goodsId="'+id+'">'+title+'</a></td><td class="col-md-2 col"><input type="number" name="" class="col goodsAmount" min="1" value="'+amount+'"></td><td class="col-md-3 col productPrice"><b>'+price+'</b><span> грн.</span></td><td class="col-1"><span class="removeGoods">☒</span></td></tr>');
+			$(".listing-cart tr:last").after('<tr class="oneGoods row"><td class="col-md-6 col"><img src="'+img+'" alt="'+title+'"><a href="'+link+'" data-goodsId="'+id+'">'+title+'</a></td><td class="col-md-2 col"><input type="number" name="" class="col goodsAmount" min="1" value="'+amount+'"></td><td class="col-md-3 col productPrice"><b>'+price+'</b><span> грн.</span></td><td class="col-1"><span class="removeGoods">☒</span></td></tr>');
 			//$('form#teleform').prepend('<input type="hidden" class="tele_form_inp" name="'+title+'" id="tef'+id+'" value="'+amount+'" />');
 			
         }
@@ -93,7 +95,8 @@ $(function(){
     // INIT
     // Оновлюєм корзину і форму телеграм після перезагрузки сторінки
     for (var i in GetGoods()){
-		$(".listing-cart tr:last, .staticCart tr:last").after('<tr class="oneGoods row"><td class="col-md-6 col"><a href="'+GetGoods()[i]["link"]+'" data-goodsId="'+[i]+'">'+GetGoods()[i]["title"]+'</a></td><td class="col-md-2 col"><input type="number" name="" class="goodsAmount" min="1" value="'+GetGoods()[i]["amount"]+'"></td><td class="col-md-3 col productPrice"><b>'+GetGoods()[i]["price"]+'</b><span> грн.</span></td><td class="col-1"><span class="removeGoods">☒</span></td></tr>');
+		$(".listing-cart tr:last ").after('<tr class="oneGoods row"><td class="col-md-6 col"><img src="'+GetGoods()[i]["img"]+'" alt="'+GetGoods()[i]["title"]+'"><a href="'+GetGoods()[i]["link"]+'" data-goodsId="'+[i]+'">'+GetGoods()[i]["title"]+'</a></td><td class="col-md-2 col"><input type="number" name="" class="goodsAmount" min="1" value="'+GetGoods()[i]["amount"]+'"></td><td class="col-md-3 col productPrice"><b>'+GetGoods()[i]["price"]+'</b><span> грн.</span></td><td class="col-1"><span class="removeGoods">☒</span></td></tr>');
+		$(".staticCart .row:last").after('<tr class="oneGoods row"><td class="col-md-6 col goods_it_ttl"><img src="'+GetGoods()[i]["img"]+'" alt="'+GetGoods()[i]["title"]+'"><a href="'+GetGoods()[i]["link"]+'" data-goodsId="'+[i]+'">'+GetGoods()[i]["title"]+'</a></td><td class="col-md-2 col"><input type="number" name="" class="goodsAmount" min="1" value="'+GetGoods()[i]["amount"]+'"></td><td class="col-md-3 col productPrice"><b>'+GetGoods()[i]["price"]+'</b><span> грн.</span></td><td class="col-1"><span class="removeGoods">☒</span></td></tr>');
 		//$('form#teleform').prepend('<input type="hidden" class="tele_form_inp" name="'+GetGoods()[i]["title"]+'" id="tef'+[i]+'" value="'+GetGoods()[i]["amount"]+'" />');
 		
 		
@@ -117,27 +120,16 @@ $(function(){
     $("body").on("click", ".add_to_cart", function(){		
 
         id = $(this).attr("data-goodsId");
-        productTitle = $(this).attr("data-goodsTitle");
+		productTitle = $(this).attr("data-goodsTitle");
+		img = $(this).attr("data-godsimg");
         productPrice = $(this).attr("data-goodsPrice");
         productLink = $(this).attr("data-linck");
-      
-        AddGoods(id, productTitle, productPrice, productLink);
+      console.log(img)
+        AddGoods(img,id, productTitle, productPrice, productLink);
 		
         return false;
     });
 
-    // // открываем модальное окно
-    // $("body").on("click", "#cart", function(){
-    //     $("#bg_0, #modalCart").fadeIn("slow");
-    //     $('html, body').animate({scrollTop: 0}, 700);
-    //     return false;
-    // })
-
-    // // закрываем модальное окно
-    // $("body").on("click", "#bg_0, .cartClose", function(){
-    //     $("#bg_0, #modalCart").fadeOut("slow");
-    //     return false;
-    // })
 
     // очистка корзины
     $("body").on("click", ".cartClear", function(){
@@ -150,19 +142,17 @@ $(function(){
         return false;
     })
 
-    // удаление одного товара
-    $("body").on("click", ".removeGoods", function(){
-        var goodsId = $(this).parents("tr").find("a:first").attr("data-goodsId");
 
+	  // удаление одного товара
+	  $("body").on("click", ".removeGoods", function(){
+        var goodsId = $(this).parents("tr").find("a:first").attr("data-goodsId");
         Goods = GetGoods();
         delete Goods[goodsId];
         localStorage.setItem("Goods", JSON.stringify(Goods));
-        //console.log(Goods);
+        
 		$(this).parents("tr").remove();
-		$("#tef" + goodsId ).remove();
-        restartGoods();
+		 restartGoods();
     })
-
     // пересчёт товаров при изменении их кол-во
     $('body').on("change keyup input click", ".goodsAmount", function() {
         //this.value
