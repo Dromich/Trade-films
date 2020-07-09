@@ -196,5 +196,3 @@ $(document).mouseup(function (e) {
 
 	}
 });
-
-$('#usd-rate').remove()
